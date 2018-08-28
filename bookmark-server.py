@@ -141,6 +141,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
             self.wfile.write("Sorry, we just could not fetch the URI '{}'.")
 
 if __name__ == '__main__':
-    server_address = ('PORT', 8000)
+    port = int(os.environ.get('PORT', 8000))
+    server_address = ('', port)
     httpd = http.server.HTTPServer(server_address, Shortener)
     httpd.serve_forever()
