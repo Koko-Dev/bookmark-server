@@ -33,9 +33,11 @@
 #
 # After writing each step, restart the server and run test.py to test it.
 
+import os
 import http.server
 import requests
 from urllib.parse import unquote, parse_qs
+
 
 memory = {}
 
@@ -139,6 +141,6 @@ class Shortener(http.server.BaseHTTPRequestHandler):
             self.wfile.write("Sorry, we just could not fetch the URI '{}'.")
 
 if __name__ == '__main__':
-    server_address = ('', 8000)
+    server_address = ('PORT', 8000)
     httpd = http.server.HTTPServer(server_address, Shortener)
     httpd.serve_forever()
